@@ -1,0 +1,20 @@
+<section class="section">
+  
+  <div class="container is-fluid">
+      <app-text-field 
+        label="Search"   
+        [val]="" 
+        [valueName]="SEARCH_ITEMS_VALUE_NAME"
+        [errMessage]="" 
+        validation=""
+        (valueChange)="onSearch($event)"
+      ></app-text-field>
+  </div>
+
+  <div [ngSwitch]="viewState" class="container is-fluid">
+    <div *ngSwitchCase="EMPTY_SEARCH_BAR_STATE"></div>
+    <app-person-table *ngSwitchCase="SEARCH_MATCH_STATE" [persons]="persons"></app-person-table>
+    <div *ngSwitchCase="SEARCH_NO_MATCH_STATE" class="has-text-centered"><p>No results...</p></div>
+  </div>
+
+</section>

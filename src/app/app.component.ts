@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 
 import { Api } from './shared/api.service'
-import { Person } from './shared/person.model'
+import { Person } from './person/person.model'
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,15 @@ import { Person } from './shared/person.model'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'phonebook';
-  persons: Person[] = [];
 
+  person= new Person(0,"test","nom","+33 5 666666")
   constructor(private api: Api) {}
 
   ngOnInit(){
 
-    this.persons = this.api.getPersons()
+  }
+
+  tesst(event) {
+    console.log(event)
   }
 }

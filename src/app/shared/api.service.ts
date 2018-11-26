@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
  
-import { Person } from './person.model';
+import { Person } from '../person/person.model';
  
 @Injectable()
 export class Api {
@@ -21,9 +21,7 @@ export class Api {
         new Person(5, "john", "smith", "+32 34 654372"),
         new Person(6, "john", "smith", "+32 34 654372"),
     ]
-
-    console.log(persons)
-
+    
     return persons
   }
 }

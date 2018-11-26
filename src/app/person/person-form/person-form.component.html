@@ -1,0 +1,29 @@
+<div className="container is-fluid"> 
+  <app-text-field 
+    label="First name" 
+    [valueName]="FIRST_NAME_FIELD_VALUE_NAME"
+    [val]="person.firstName" 
+    [errMessage]="'Invalid first name'" 
+    validation=""
+    (valueChange)="onFieldChange($event)"
+    >
+  </app-text-field>
+  <app-text-field 
+    label="Last name"   
+    [val]="person.lastName" 
+    [valueName]="LAST_NAME_FIELD_VALUE_NAME"
+    [errMessage]="'Invalid last name'" 
+    validation=""
+    (valueChange)="onFieldChange($event)"
+    >
+  </app-text-field>
+  <app-text-field 
+    label="Telephone"   
+    [val]="person.telephone" 
+    [valueName]="TELEPHONE_FIELD_VALUE_NAME"
+    [errMessage]="'Invalid telephone number must be: +32 34 323453 (plus sign, space, group of digits, space, group of digits with at least 6 digits)'" 
+    [validation]="TELEPHONE_VALIDATION_REGEX"
+    (valueChange)="onFieldChange($event)"
+    >
+  </app-text-field>
+</div>
