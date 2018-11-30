@@ -1,0 +1,13 @@
+<div class="field is-horizontal text-field">
+    <div class="field-label">
+        <label class="label">{{ label }}</label>
+    </div>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <input class="{{isValid ? 'input' : 'input is-danger'}}" type="text" (input)="onInput($event)" [value]="val">
+                <p *ngIf="!isValid" class="help is-danger">{{ errMessage }}</p>
+            </div>
+        </div>
+    </div>
+</div>

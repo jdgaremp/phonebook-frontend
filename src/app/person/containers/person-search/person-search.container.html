@@ -1,0 +1,30 @@
+<section class="section">
+  
+  <div class="container is-fluid">
+      <app-text-field 
+        label="Search Person"   
+        [val]="" 
+        [valueName]="SEARCH_ITEMS_VALUE_NAME"
+        [errMessage]="" 
+        validation=".*"
+        (valueChange)="onSearch($event)"
+      ></app-text-field>
+  </div>
+  <div [ngSwitch]="viewState" class="container is-fluid">
+    
+    <div *ngSwitchCase="EMPTY_SEARCH_BAR_STATE"></div>
+
+    <app-msg-box *ngSwitchCase="SEARCH_LOADING_STATE" colorClass="is-info">
+      Loading ...
+    </app-msg-box>
+
+    <app-msg-box *ngSwitchCase="SEARCH_ERROR_STATE" title="Error" colorClass="is-danger">
+      Sorry, an error occured please refresh
+    </app-msg-box>
+
+    <div *ngSwitchCase="SEARCH_NO_MATCH_STATE" class="has-text-centered"><p>No Results</p></div>
+
+    <app-person-table *ngSwitchCase="SEARCH_MATCH_STATE" [persons]="persons"></app-person-table>
+
+  </div>
+</section>

@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 
-import { Api } from './shared/api.service'
-import { Person } from './person/person.model'
+import { Person } from './person/models/person.model'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,8 @@ import { Person } from './person/person.model'
 export class AppComponent implements OnInit {
 
   person= new Person(0,"test","nom","+33 5 666666")
-  constructor(private api: Api) {}
+  
+  constructor() {}
 
   ngOnInit(){
 

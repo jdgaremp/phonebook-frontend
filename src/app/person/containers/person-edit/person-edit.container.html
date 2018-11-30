@@ -1,0 +1,31 @@
+<section class="section">
+    <div [ngSwitch]="viewState">
+        <app-msg-box *ngSwitchCase="PERSON_FETCH_ERROR" class="is-danger" title="Error" colorClass="is-danger">
+            Error: person (id: {{ personId }}) does not exist.
+        </app-msg-box>
+
+        <app-msg-box *ngSwitchCase="PERSON_FETCH_LOADING" class="is-danger" colorClass="is-danger">
+            <b>
+                <fa-icon [icon]="faPhoneSquare" [spin]="true"></fa-icon> Loading ...
+            </b>
+        </app-msg-box>
+
+        <div *ngSwitchCase="PERSON_FETCH_SUCCESS">
+            <h1 class="title">Edit person</h1>
+            <app-person-form [person]="person" (confirm)="onConfirm($event)" (cancel)="onCancel()"></app-person-form>
+        </div>
+    </div>
+    <div [ngSwitch]="requestState" class="container is-fluid">
+        <app-msg-box *ngSwitchCase="PERSON_EDIT_LOADING" colorClass="is-info">
+            Loading ...
+        </app-msg-box>
+
+        <app-msg-box *ngSwitchCase="PERSON_EDIT_ERROR" title="Error" colorClass="is-danger">
+            Sorry, an error occured please refresh
+        </app-msg-box>
+
+        <app-msg-box *ngSwitchCase="PERSON_EDIT_SUCCESS" colorClass="is-success">
+            Person edited successfully.
+        </app-msg-box>
+    </div>
+</section>

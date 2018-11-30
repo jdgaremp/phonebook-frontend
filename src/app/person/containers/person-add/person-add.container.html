@@ -1,0 +1,19 @@
+<section class="section">
+      <h1 class="title">Add person</h1>
+      <app-person-form (confirm)="onConfirm($event)" (cancel)="onCancel()"></app-person-form>
+
+      <div [ngSwitch]="viewState" class="container is-fluid">
+
+            <app-msg-box *ngSwitchCase="ADD_LOADING_STATE" colorClass="is-info">
+                  Loading ...
+            </app-msg-box>
+
+            <app-msg-box *ngSwitchCase="ADD_ERROR_STATE" title="Error" colorClass="is-danger">
+                  Sorry, an error occured please refresh
+            </app-msg-box>
+
+            <app-msg-box *ngSwitchCase="ADD_SUCCESS_STATE" colorClass="is-success">
+                  Person added successfully.
+            </app-msg-box>
+      </div>
+</section>
