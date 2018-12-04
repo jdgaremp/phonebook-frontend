@@ -40,20 +40,21 @@ export class PersonEditContainer implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-
       this.personId = params['id']
+      this.personService.getPerson(+params['id'])
+      // this.personService.getPerson
 
-      this.personService.getPerson(+params['id']).subscribe(
-        person => {
-          this.person = person
-          this.viewState = this.PERSON_FETCH_SUCCESS
-        },
-        error => {
-          this.viewState = this.PERSON_FETCH_ERROR
-        })
+      // this.personId = params['id']
+      // this.personService.getPerson(+params['id']).subscribe(
+      //   person => {
+      //     this.person = person
+      //     this.viewState = this.PERSON_FETCH_SUCCESS
+      //   },
+      //   error => {
+      //     this.viewState = this.PERSON_FETCH_ERROR
+      //   })
     })
   }
-
   onConfirm(person) {
 
     this.requestState = this.PERSON_EDIT_LOADING
@@ -66,6 +67,19 @@ export class PersonEditContainer implements OnInit {
       }
     )
   }
+
+  // onConfirm(person) {
+
+  //   this.requestState = this.PERSON_EDIT_LOADING
+  //   this.personService.putPerson(person).subscribe(
+  //     response => {
+  //       this.requestState = this.PERSON_EDIT_SUCCESS
+  //     },
+  //     error => {
+  //       this.requestState = this.PERSON_EDIT_ERROR
+  //     }
+  //   )
+  // }
 
   onCancel() {
 

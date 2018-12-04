@@ -12,10 +12,10 @@ export class PersonSearchContainer implements OnInit {
   SEARCH_ITEMS_VALUE_NAME = 'search_items'
 
   EMPTY_SEARCH_BAR_STATE = 'empty_search_bar'
-  SEARCH_LOADING_STATE   = 'search_load'
-  SEARCH_MATCH_STATE     = 'search_match'
-  SEARCH_NO_MATCH_STATE  = 'search_no_match'
-  SEARCH_ERROR_STATE     = 'search_error'
+  SEARCH_LOADING_STATE = 'search_load'
+  SEARCH_MATCH_STATE = 'search_match'
+  SEARCH_NO_MATCH_STATE = 'search_no_match'
+  SEARCH_ERROR_STATE = 'search_error'
 
   viewState = this.EMPTY_SEARCH_BAR_STATE
   persons: Person[] = []
@@ -26,25 +26,40 @@ export class PersonSearchContainer implements OnInit {
 
   }
 
+  // onSearch(event) {
+
+  //   if (event.value == '') {
+
+  //     this.viewState = this.EMPTY_SEARCH_BAR_STATE
+
+  //   } else {
+
+  //     this.viewState = this.SEARCH_LOADING_STATE
+
+  //     this.personService.searchPersons(event.value)
+  //       .subscribe(persons => {
+
+  //         this.persons = persons
+
+  //         this.viewState = this.persons.length > 0 ? 
+  //           this.SEARCH_MATCH_STATE : this.SEARCH_NO_MATCH_STATE
+  //       }, 
+  //       error => this.viewState = this.SEARCH_ERROR_STATE)
+  //   }
+  // }
+
   onSearch(event) {
 
     if (event.value == '') {
 
-      this.viewState = this.EMPTY_SEARCH_BAR_STATE
+      //this.viewState = this.EMPTY_SEARCH_BAR_STATE
 
     } else {
 
-      this.viewState = this.SEARCH_LOADING_STATE
-
-      this.personService.searchPersons(event.value)
-        .subscribe(persons => {
-
-          this.persons = persons
-
-          this.viewState = this.persons.length > 0 ? 
-            this.SEARCH_MATCH_STATE : this.SEARCH_NO_MATCH_STATE
-        }, 
-        error => this.viewState = this.SEARCH_ERROR_STATE)
+      //this.viewState = this.SEARCH_LOADING_STATE
+      this.viewState = this.SEARCH_MATCH_STATE
+      console.log(this.personService.searchPersons(event.value))
+     this.persons= this.personService.searchPersons(event.value)
     }
   }
 }
