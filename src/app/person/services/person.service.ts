@@ -7,16 +7,16 @@ import { map, catchError } from 'rxjs/operators';
 
 
 const persons: Person[] = [
-  new Person(0, "a", "name", "+33 33 333333"),
-  new Person(1, "b", "name", "+33 33 333333"),
-  new Person(3, "a", "name", "+33 33 333333"),
-  new Person(4, "a", "name", "+33 33 333333")
+  new Person(0, "John", "Doe", "+33 00 00000"),
+  new Person(1, "Martine", "Bertrand", "+33 05 56565656"),
+  new Person(3, "Gérard", "Pilat", "+33 890 0654321"),
+  new Person(4, "Mickael", "Douglas", "+32 34 44658798")
 ]
 
 @Injectable()
 export class PersonService {
 
-  apiUrl = 'http://localhost:3000'
+  //apiUrl = 'http://localhost:8080'
   endpoint = 'persons'
   serializer = new PersonSerializer();
 
@@ -34,11 +34,39 @@ export class PersonService {
   // }
 
   searchPersons(term: string) {
-    const tableOfPersons = []
+    const tableOfPersons: Person[] = []
     for (var i = 0; i < persons.length; i++) {
-      if (persons[i].getFirstName().indexOf(term) != -1 || persons[i].getLastName().indexOf(term) != -1 || persons[i].getTelephone().indexOf(term) != -1) {
-        console.log("test OK")
+
+      console.log("person " + persons[i])
+
+      console.log("persons[i].getFirstName().indexOf(term)  " + persons[i].getFirstName().indexOf(term))
+      console.log("persons[i].getLastName().indexOf(term)  " + persons[i].getLastName().indexOf(term))
+      console.log("persons[i].getLastName().indexOf(term)  " + persons[i].getLastName().indexOf(term))
+
+
+
+
+
+      if (persons[i].getFirstName().indexOf(term) != -1) {
+        console.log("first name")
+
         tableOfPersons.push(persons[i])
+        if (tableOfPersons != null && tableOfPersons.indexOf(persons[i]) === -1) {
+          tableOfPersons.push(persons[i])
+        }
+      }
+      if (persons[i].getLastName().indexOf(term) != -1) {
+        console.log("last name")
+        if (tableOfPersons != null && tableOfPersons.indexOf(persons[i]) === -1) {
+          tableOfPersons.push(persons[i])
+        }
+      }
+      if (persons[i].getTelephone().indexOf(term) != -1) {
+        console.log("telephone")
+        tableOfPersons.push(persons[i])
+        if (tableOfPersons != null && tableOfPersons.indexOf(persons[i]) === -1) {
+          tableOfPersons.push(persons[i])
+        }
       }
     }
     return tableOfPersons;
