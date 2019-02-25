@@ -6,13 +6,12 @@ import { faPlusCircle, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
-  
-  // icons
-  faPlusCircle=faPlusCircle
-  faPhoneSquare=faPhoneSquare
 
-  constructor() { }
+export class NavBarComponent implements OnInit {
+
+  // icons
+  faPlusCircle = faPlusCircle
+  faPhoneSquare = faPhoneSquare
 
   ngOnInit() {
   }

@@ -52,6 +52,8 @@ export class PersonEditContainer implements OnInit {
           this.viewState = this.PERSON_FETCH_ERROR
         })
     })
+
+    console.log("juliette:   " + this.personId)
   }
 
   onConfirm(person) {

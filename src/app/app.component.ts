@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Person } from './person/models/person.model'
 
@@ -8,12 +8,12 @@ import { Person } from './person/models/person.model'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title = 'phonebook';
+  person = new Person(0, "test", "nom", "+33 5 666666")
 
-  person= new Person(0,"test","nom","+33 5 666666")
-  
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 

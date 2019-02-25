@@ -1,10 +1,10 @@
 export class Person {
 
-    FIRST_NAME_VALIDATION_REGEX=/\S+/
-    LAST_NAME_VALIDATION_REGEX=/\S+/
-    TELEPHONE_VALIDATION_REGEX=/\+\d{2,}\s\d{2,}\s\d{6,}$/
+    FIRST_NAME_VALIDATION_REGEX = /\S+/
+    LAST_NAME_VALIDATION_REGEX = /\S+/
+    TELEPHONE_VALIDATION_REGEX = /\+\d{2,}\s\d{2,}\s\d{6,}$/
 
-    constructor(private id: number, private firstName, private lastName, private telephone: string) { }
+    constructor(private id, private firstName, private lastName, private telephone: string) { }
 
     getId() {
         return this.id
@@ -35,8 +35,8 @@ export class Person {
     }
 
     isValid() {
-        return (this.FIRST_NAME_VALIDATION_REGEX.test(this.firstName) && 
-            this.LAST_NAME_VALIDATION_REGEX.test(this.lastName) && 
+        return (this.FIRST_NAME_VALIDATION_REGEX.test(this.firstName) &&
+            this.LAST_NAME_VALIDATION_REGEX.test(this.lastName) &&
             this.TELEPHONE_VALIDATION_REGEX.test(this.telephone))
     }
 }

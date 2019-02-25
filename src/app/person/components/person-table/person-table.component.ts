@@ -18,7 +18,6 @@ export class PersonTableComponent implements OnInit {
   // icons
   faEdit = faEdit
 
-
   constructor() { }
 
   ngOnInit() {

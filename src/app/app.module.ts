@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module'
 import { AppRoutingModule } from './routing/app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { PersonModule } from './person/person.module'
 
@@ -19,8 +20,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     SharedModule,
     DashboardModule,
-    PersonModule.forRoot()
+    PersonModule.forRoot(),
+    FontAwesomeModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

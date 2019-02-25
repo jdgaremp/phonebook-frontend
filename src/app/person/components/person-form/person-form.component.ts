@@ -20,24 +20,22 @@ export class PersonFormComponent implements OnInit {
   @Output()
   cancel = new EventEmitter()
 
-  confirmButtonEnabled
+  confirmButtonEnabled: boolean
 
-  constructor(private router: Router, private personService: PersonService) {}
+  constructor(private router: Router, private personService: PersonService) { }
 
   ngOnInit() {
-
-    this.confirmButtonEnabled = this.person && this.person.isValid
+    this.confirmButtonEnabled = this.person && this.person.isValid()
   }
 
   onFormChange(event) {
-
     this.person = event.value
     this.confirmButtonEnabled = event.value.isValid()
   }
 
   onButtonClick(event) {
 
-    event === 'confirm' ? 
+    event === 'confirm' ?
       this.confirm.emit(this.person) : this.cancel.emit(null)
   }
 }

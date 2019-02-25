@@ -13,10 +13,10 @@ import { PersonTableComponent } from './components/person-table/person-table.com
 import { PersonFormFieldsComponent } from './components/person-form/fields/person-form-fields.component'
 import { PersonFormComponent } from './components/person-form/person-form.component'
 import { PersonAddContainer } from './containers/person-add/person-add.container'
-import { PersonEditContainer} from './containers/person-edit/person-edit.container'
+import { PersonEditContainer } from './containers/person-edit/person-edit.container'
 import { PersonSearchContainer } from './containers/person-search/person-search.container'
 
-import { PersonService } from './services/person.service'
+import { PersonService } from './services/person.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { PersonService } from './services/person.service'
     PersonSearchContainer
   ]
 })
-export class PersonModule { 
+export class PersonModule {
 
   static forRoot(): ModuleWithProviders {
     return {

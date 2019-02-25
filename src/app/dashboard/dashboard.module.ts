@@ -15,7 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   exports: [
-    NavBarComponent,
+    NavBarComponent
   ]
 })
 export class DashboardModule { }

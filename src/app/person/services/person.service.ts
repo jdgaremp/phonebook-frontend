@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class PersonService {
 
-  apiUrl = 'http://localhost:3000'
+  apiUrl = 'http://localhost:8080'
   endpoint = 'persons'
   serializer = new PersonSerializer();
 
@@ -18,7 +18,7 @@ export class PersonService {
   searchPersons(term: string) {
 
     return this.http.get<Person>(
-      `${this.apiUrl}/${this.endpoint}/search?firstname=${term}&lastname=${term}&telephone=${term}`
+      `${this.apiUrl}/${this.endpoint}/search?firstname=${term}&lastname=${term}&phonenumber=${term}`
     ).pipe(
       map((response: any) => {
         return response.map(personJson => this.serializer.fromJson(personJson))
@@ -38,6 +38,7 @@ export class PersonService {
   }
 
   addPerson(person: Person): Observable<any> {
+    console.log("Juliette:    " + person.getId() + " " + person.getLastName())
 
     return this.http.post(`${this.apiUrl}/${this.endpoint}`, this.serializer.toJson(person))
   }
@@ -51,16 +52,16 @@ export class PersonService {
 class PersonSerializer {
 
   fromJson(json: any): Person {
-
-    return new Person(json.id, json.firstname, json.lastname, json.telephone)
+    console.log(json.id + json.firstName)
+    return new Person(json.id, json.firstName, json.lastName, json.phoneNumber)
   }
 
   toJson(person: Person): any {
-    
+
     return {
-      firstname: person.getFirstName(),
-      lastname: person.getLastName(),
-      telephone: person.getTelephone()
+      firstName: person.getFirstName(),
+      lastName: person.getLastName(),
+      phoneNumber: person.getTelephone()
     }
   }
 }

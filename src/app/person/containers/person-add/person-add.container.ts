@@ -10,14 +10,14 @@ import { PersonService } from '../../services/person.service';
 })
 export class PersonAddContainer implements OnInit {
 
-  INITIAL_STATE     = 'initial_state'
+  INITIAL_STATE = 'initial_state'
   ADD_SUCCESS_STATE = 'add_success_state'
-  ADD_ERROR_STATE   = 'add_error_state'
+  ADD_ERROR_STATE = 'add_error_state'
   ADD_LOADING_STATE = 'add_loading_state'
 
   viewState = this.INITIAL_STATE
 
-  constructor(private router: Router, private personService: PersonService) {}
+  constructor(private router: Router, private personService: PersonService) { }
 
   ngOnInit() {
   }
@@ -27,8 +27,10 @@ export class PersonAddContainer implements OnInit {
     this.viewState = this.ADD_LOADING_STATE
 
     this.personService.addPerson(person)
-      .subscribe(resp => this.viewState = this.ADD_SUCCESS_STATE, 
+      .subscribe(resp => this.viewState = this.ADD_SUCCESS_STATE,
         error => this.viewState = this.ADD_ERROR_STATE)
+
+    this.router.navigate(['/'])
   }
 
   onCancel() {
